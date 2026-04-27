@@ -1,0 +1,15 @@
+% program   : RTKPOST-EX 2.5.0
+% inp file  : D:\Academic\0 Research\000 In preparation\00 GPS positioning performance circular analysis during short-term fast-developing geomagnetic storms\Storm 2\trie1490.17d
+% inp file  : D:\Academic\0 Research\000 In preparation\00 GPS positioning performance circular analysis during short-term fast-developing geomagnetic storms\Storm 2\brdc1490.17n
+% obs start : 2017/05/29 00:00:00.0 GPST (week1951  86400.0s)
+% obs end   : 2017/05/29 23:59:30.0 GPST (week1951 172770.0s)
+% pos mode  : Single
+% elev mask : 15.0 deg
+% tidecorr  :
+% ionos opt : Broadcast
+% tropo opt : Saastamoinen
+% ephemeris : Broadcast
+% navi sys  : GPS
+%
+% (lat/lon/height=WGS84/ellipsoidal,Q=1:fix,2:float,3:sbas,4:dgps,5:single,6:ppp,ns=# of satellites)
+%  GPST                  latitude(deg) longitude(deg)  height(m)   Q  ns   sdn(m)   sde(m)   sdu(m)  sdne(m)  sdeu(m)  sdun(m) age(s)  ratio
