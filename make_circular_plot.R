@@ -150,10 +150,10 @@ for (nn in names(strnn)) {
   p <- ggplot(plot_data, aes(x = start_bin, y = prop, fill = end_bin)) +
     
     # Draw radial grid rings (starts at 0)
-    geom_hline(yintercept = seq(0, 1, 0.1), color = "black", linewidth = 0.3) +
+    geom_hline(yintercept = seq(0, 1, 0.1), color = "gray40", linewidth = 0.4) +
     
     # Draw the wedges
-    geom_col(width = 0.85, color = "black", linewidth = 0.3, position = position_stack(reverse = TRUE), family = "DejaVu Sans") +
+    geom_col(width = 0.85, color = "black", linewidth = 0.5, position = position_stack(reverse = TRUE), family = "DejaVu Sans") +
     
     # Draw the rotating wedge percentage labels 
     geom_text(aes(label = label_text, color = text_color, angle = text_angle), 
@@ -171,7 +171,7 @@ for (nn in names(strnn)) {
     # Rotate backwards by exactly half a slice (pi/25) to center the gap at 12 o'clock
     coord_polar(theta = "x", start = -pi/25) +
     
-    scale_fill_grey(labels = parse(text = pm_labels), start = 0.9, end = 0.2) +
+    scale_fill_viridis_d(labels = parse(text = pm_labels), option = "plasma", direction = -1) +
     
     # Drop=FALSE forces the gap to be drawn. Hide the default axis text.
     scale_x_discrete(drop = FALSE) +
@@ -188,10 +188,12 @@ for (nn in names(strnn)) {
       legend.title = element_blank(),
       legend.text = element_text(size = 10, family = "DejaVu Sans"),
       # Pull the legend UP into the dead space by 30 pixels
-      legend.margin = margin(t = -30, b = 0), 
+      legend.margin = margin(t = -30, b = 0),
       
       # Keep the title centered, but remove the bottom padding
-      plot.title = element_text(hjust = 0.5, size = 13, margin = margin(t = -30, b = 0), family = "DejaVu Sans"),
+      plot.title = element_text(hjust = 0.5, size = 14, face = "bold", margin = margin(t = -30, b = 0), family = "DejaVu Sans"),
+      
+      legend.key.size = unit(1.2, "lines"),
       
       # Strip all outer plot margins entirely
       plot.margin = margin(0, 0, 0, 0),
