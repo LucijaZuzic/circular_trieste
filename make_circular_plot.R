@@ -128,11 +128,11 @@ for (nn in names(strnn)) {
       text_angle = (-theta_deg) %% 360
     )
   
-  # Create a separate dataset for the 0% to 100% scale printed inside the top gap
+  # Create a separate dataset for the 50% to 100% scale printed inside the top gap
   axis_labels <- data.frame(
     start_bin = factor("gap", levels = c("gap", as.character(0:23))),
-    y = seq(0.05, 1.05, 0.1), # Centering text
-    label = paste0(seq(0, 100, 10), "%") # Added 0% here
+    y = seq(0.55, 1.05, 0.1), # Centering text
+    label = paste0(seq(50, 100, 10), "%") # Added 0% here
   )
   
   # Create a separate dataset for the manually rotated outer hour labels
@@ -157,16 +157,16 @@ for (nn in names(strnn)) {
     
     # Draw the rotating wedge percentage labels 
     geom_text(aes(label = label_text, color = text_color, angle = text_angle), 
-              position = position_stack(vjust = 0.9, reverse = TRUE), size = 3.5, show.legend = FALSE, family = "DejaVu Sans") +
+              position = position_stack(vjust = 0.9, reverse = TRUE), size = 5, show.legend = FALSE, family = "DejaVu Sans") +
     scale_color_identity() +
     
     # Draw the 0% to 100% labels exactly centered in the gap
     geom_text(data = axis_labels, aes(x = start_bin, y = y, label = label), 
-              inherit.aes = FALSE, size = 2.5, color = "black", hjust = 0.5, vjust = 0.5, family = "DejaVu Sans") +
+              inherit.aes = FALSE, size = 5, color = "black", hjust = 0.5, vjust = 0.5, family = "DejaVu Sans") +
               
     # Draw the rotating outer hour labels
     geom_text(data = hour_labels, aes(x = start_bin, y = y, label = label, angle = text_angle),
-              inherit.aes = FALSE, size = 3.5, color = "black", hjust = 0.5, vjust = 0.5) +
+              inherit.aes = FALSE, size = 10, color = "black", hjust = 0.5, vjust = 0.5) +
     
     # Rotate backwards by exactly half a slice (pi/25) to center the gap at 12 o'clock
     coord_polar(theta = "x", start = -pi/25) +
@@ -186,12 +186,12 @@ for (nn in names(strnn)) {
     theme(
       legend.position = "bottom",
       legend.title = element_blank(),
-      legend.text = element_text(size = 10, family = "DejaVu Sans"),
+      legend.text = element_text(size = 24, family = "DejaVu Sans"),
       # Pull the legend UP into the dead space by 30 pixels
       legend.margin = margin(t = -30, b = 0),
       
       # Keep the title centered, but remove the bottom padding
-      plot.title = element_text(hjust = 0.5, size = 14, face = "bold", margin = margin(t = -30, b = 0), family = "DejaVu Sans"),
+      plot.title = element_text(hjust = 0.5, size = 18, face = "bold", margin = margin(t = -20, b = 0), family = "DejaVu Sans"),
       
       legend.key.size = unit(1.2, "lines"),
       
